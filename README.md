@@ -2,25 +2,26 @@
 
 ## users テーブル
 
-| Column       | Type   | Options     |
-| ------------ | ------ | ----------- |
-| nickname     | string | null: false |
-| email        | string | null: false |
-| password     | string | null: false |
-| name         | string | null: false |
-| name_reading | string | null: false |
-| dob          | date   | null: false |
+| Column              | Type   | Options     |
+| ------------------- | ------ | ----------- |
+| nickname            | string | null: false |
+| email               | string | null: false |
+| password            | string | null: false |
+| family_name         | string | null: false |
+| first_name          | string | null: false |
+| family_name_reading | string | null: false |
+| first_name_reading  | string | null: false |
+| dob                 | date   | null: false |
 
 ### Association
 
 - has_many :items
 - has_many :comments
-- has_one :address
 - has_many :purchases
 
-## rooms テーブル
+## items テーブル
 
-| Column              | Type       | Option                         |
+| Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
 | image               | string     | null: false                    |
 | name                | string     | null: false                    |
@@ -37,6 +38,8 @@
 
 - belongs_to :user
 - has_many :comments
+- has_many :addresses, through: :items_addresses
+- has_many :items_addresses
 - has_one :purchase
 
 ## comments テーブル
@@ -50,24 +53,35 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :user
+- belongs_to :item
 
 ## addresses テーブル
 
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
 | postal_code  | integer    | null: false                    |
-| prefecture   | string     | null: false                    |
 | city         | string     | null: false                    |
 | address      | string     | null: false                    |
 | building     | string     |                                |
-| phone_number | integer    | null: false                    |
-| user         | references | null: false, foreign_key: true |
+| phone_number | string     | null: false                    |
+| item         | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :user
-- has_one :purchase
+- has_many :items, through: :items_addresses
+- has_many :items_addresses
+
+## items_addresses テーブル
+
+| Column  | Type       | Options                        |
+| ------- | -----------| ------------------------------ |
+| item    | references | null: false, foreign_key: true |
+| address | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :item
+- belongs_to :address
 
 ## purchases テーブル
 
@@ -75,10 +89,8 @@
 | ------- | ---------- | ------------------------------ |
 | user    | references | null: false, foreign_key: true |
 | item    | references | null: false, foreign_key: true |
-| address | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
-- belongs_to :address
