@@ -5,6 +5,12 @@ Rails.application.routes.draw do
   }
   root to: 'items#index'
   resources :items, only: :index
-  resources :registrations, only: [:new, :create]
-  resources :sessions, only: [:new, :destroy]
+  # namespace :users do
+  #   resources :registrations, only: [:new, :create]
+  #   resources :sessions, only: [:new, :destroy]
+  # end
+  #post '/', to: 'users/registrations#new'
 end
+
+# rails g devise:controllers users
+# rails generate devise:controllers users
