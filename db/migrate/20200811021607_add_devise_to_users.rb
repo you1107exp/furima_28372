@@ -3,12 +3,12 @@
 class AddDeviseToUsers < ActiveRecord::Migration[6.0]
   def self.up
     change_table :users do |t|
-      t.string :nickname
-      t.string :family_name
-      t.string :first_name
-      t.string :family_name_reading
-      t.string :first_name_reading
-      t.date :dob
+      t.string :nickname, null: false
+      t.string :family_name, null: false
+      t.string :first_name, null: false
+      t.string :family_name_reading, null: false
+      t.string :first_name_reading, null: false
+      t.date :dob, null: false
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
