@@ -11,6 +11,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     #User.create
     super
+    @user = User.new
+    if @user.valid?
+      @user.save
+      root_path
+    else
+      'new'
+    end
   end
   # GET /resource/sign_up
   # def new
