@@ -11,7 +11,7 @@ class User < ApplicationRecord
     validates :email, format: { with: VALID_EMAIL_REGEX, message: "Email Include @" }
 
     VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i
-    validates :password, length: { minimum: 6 }, format: { with: VALID_PASSWORD_REGEX}
+    validates :password, format: { with: VALID_PASSWORD_REGEX}
 
     VALID_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/
     validates :family_name, format: { with: VALID_NAME_REGEX, message: "Family name Full-width characters" }
