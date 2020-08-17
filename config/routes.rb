@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
   root to: 'items#index'
+  get 'items', to: 'items#new'
   resources :items
   # namespace :users do
   #   resources :registrations, only: [:new, :create]

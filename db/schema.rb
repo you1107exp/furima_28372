@@ -51,12 +51,12 @@ ActiveRecord::Schema.define(version: 2020_08_16_132658) do
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "nickname"
-    t.string "family_name"
-    t.string "first_name"
-    t.string "family_name_reading"
-    t.string "first_name_reading"
-    t.date "dob"
+    t.string "nickname", null: false
+    t.string "family_name", null: false
+    t.string "first_name", null: false
+    t.string "family_name_reading", null: false
+    t.string "first_name_reading", null: false
+    t.date "dob", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
