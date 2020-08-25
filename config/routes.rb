@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'addresses/index'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions'
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   resources :items do
     resources :purchases
   end
+  resources :addresses
   # namespace :users do
   #   resources :registrations, only: [:new, :create]
   #   resources :sessions, only: [:new, :destroy]
