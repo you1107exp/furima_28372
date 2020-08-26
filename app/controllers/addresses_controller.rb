@@ -8,7 +8,8 @@ class AddressesController < ApplicationController
 
   def create
     @address = PurchaseAddress.create(address_params)
-    if @address.save
+    if @address.valid? 
+      @address.save
       redirect_to root_path
     else
       render :new
