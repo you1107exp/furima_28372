@@ -9,9 +9,19 @@
     <div class='item-img-content'>
       <%= image_tag @item.image, class:"item-box-img" %>
       <%# 商品が売れている場合は、sould outの表示をしましょう。 %>
-      <div class='sold-out'>
-        <span>Sold Out!!</span>
-      </div>
+      <%# <% @purchases.each do |purchase| %>
+                <%# <% if purchase.item_id == item.id %>
+                  <%# <div class='sold-out'> %>
+                    <%# <span>Sold Out!!</span> %>
+                  <%# </div> %>
+                <%# <% end %>
+      <% @purchases.each do |purchase| %>
+        <% if purchase.item_id == @item.id %>
+          <div class='sold-out'>
+            <span>Sold Out!!</span>
+          </div>
+        <% end %>
+      <% end %>
       <%# //商品が売れている場合は、sould outの表示をしましょう。 %>
     </div>
     <div class="item-price-box">
