@@ -38,8 +38,6 @@
 
 - belongs_to :user
 - has_many :comments
-- has_many :addresses, through: :items_addresses
-- has_many :items_addresses
 - has_one :purchase
 
 ## comments テーブル
@@ -65,24 +63,10 @@
 | address       | string     | null: false                    |
 | building      | string     |                                |
 | phone_number  | string     | null: false                    |
-| item          | references | null: false, foreign_key: true |
+| purchase      | references | null: false, foreign_key: true |
 
 ### Association
-
-- has_many :items, through: :items_addresses
-- has_many :items_addresses
-
-## items_addresses テーブル
-
-| Column  | Type       | Options                        |
-| ------- | -----------| ------------------------------ |
-| item    | references | null: false, foreign_key: true |
-| address | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :item
-- belongs_to :address
+- belongs_to :purchase
 
 ## purchases テーブル
 
