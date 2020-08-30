@@ -1,12 +1,11 @@
 class PurchasesController < ApplicationController
+  before_action :set_purchase, only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id])
     @purchase = PurchaseAddress.new
   end
   
   def create
-    @item = Item.find(params[:item_id])
     @purchase = PurchaseAddress.new(purchase_params)
     if @purchase.valid?
       pay_item
@@ -18,6 +17,10 @@ class PurchasesController < ApplicationController
   end
 
   private
+
+  def set_purchase
+    @item = Item.find(params[:item_id])
+  end
 
   def purchase_params
     params.require(:purchase_address).permit(:postal_code, :prefecture_id, :city, :address, :building, :phone_number, :token).merge(user_id: current_user.id, item_id: @item.id)
