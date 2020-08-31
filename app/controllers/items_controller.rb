@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @purchases = Purchase.all 
+    @purchases = Purchase.all
   end
 
   def edit
