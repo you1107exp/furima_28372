@@ -23,6 +23,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
       Payjp.createToken(card, (status, response) => {
         if (status === 200) {
+          console.log("OK")
           // response.idでtokenが取得できます。
           const token = response.id;
           const renderDom = document.getElementById("charge-form");
